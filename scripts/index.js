@@ -101,7 +101,7 @@ var notesPage    = document.querySelector('.notes');
 
 // the URL of our backend to use in our AJAX calls:
 //var url = 'http://localhost:3000';
-var url='https://secure-escarpment-71346.herokuapp.com'
+var url='https://secure-escarpment-71346.herokuapp.com';
 
 //hide all entries
 var currentEntries = document.querySelector('.current-entries');
