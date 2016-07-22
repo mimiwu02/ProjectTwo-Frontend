@@ -1,0 +1,94 @@
+/*home icon found on every page except homepage*/
+#home {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 30px;
+}
+
+
+/*homepage*/
+body {
+  margin:0;
+}
+h1 {
+  font-family: 'Lily Script One', cursive;
+  font-size: 50px;
+  color: #ee6e73;
+  margin-left: 200px;
+  margin-bottom: 0;
+}
+
+h3, h5, footer, #quote {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-weight: 300;
+}
+
+h5 {
+  z-index: 1;
+}
+
+
+header {
+  height: 20vh;
+}
+
+main {
+  height: 75vh;
+  text-align: center;
+  z-index: 1;
+  }
+
+footer {
+  height: 5vh;
+  margin: 0;
+}
+
+#quote-icon {
+  height: 200px;
+  weight: 200px;
+  margin-top: 100px;
+}
+
+#quote {
+  margin-top: 100px;
+  font-family: 'Roboto', sans-serif;
+  color: #41E2FF;
+  font-size: 30px;
+
+}
+
+#next-btn {
+  margin-top: 60px;
+  font-size: 20px;
+  background: lightgrey;
+  border-radius: 5px;
+}
+
+/*To Do Page*/
+#currentDate {
+  font-family: 'Roboto', sans-serif;
+  margin-left: 30px;
+  margin-top: 30px;
+  height: 50px;
+  width: 100px;
+}
+
+
+#question, #questionTwo {
+  color: #53BBB4;
+  font-family: 'Lily Script One', cursive;
+  font-size: 30px;
+  margin-bottom: 30px;
+  }
+
+#weather, #news, #notes{
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}
+
+/*Notes Page*/
