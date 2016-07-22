@@ -22,7 +22,7 @@ quoteBtn.style.display   = "none";
 quote.style.display      = "block";
 
 
-var endpoint = "http://quotesondesign.com/wp-json/posts"
+var endpoint = "https://quotesondesign.com/wp-json/posts"
 var query    = endpoint + "?filter[orderby]=rand&filter[posts_per_page]=" + Math.floor(Math.random()*50); // randomizes the amount of post per page so it returns a different quote everytime page refreshes
 console.log(query);
 
@@ -44,7 +44,7 @@ $.ajax({
  nextBtn.addEventListener('click', function(ev){
    ev.preventDefault();
    homepage.style.display   = "none";
-   actionPage.style.display ="block";
+   actionPage.style.display = "block";
 
 
 /***** Part 2 - This is scripting for the actions page*****/
@@ -127,13 +127,10 @@ var seeAll         = document.getElementById('see-all-btn');
         // remove existing li's first
         entriesList.innerHTML = '';
         for (var i = 0; i < response.length; i++) {
-          var liText     = response[i].note;
-          var timeOfPost = response[i].current;
+          var liText     = response[i].note + " " + " " + response[i].current;
           var theLi      = document.createElement('li');
-          var postDate   = document.getElementById('timestamp');
           theLi.appendChild(document.createTextNode(liText));
           entriesList.appendChild(theLi);
-          postDate.innerHTML = timeOfPost;
         }
       });
 }); //end of event listener for seeAll button
