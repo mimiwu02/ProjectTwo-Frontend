@@ -96,6 +96,19 @@
     </header>
 
     <main>
+      <h1 id="currentForecast">Current forecast:</h1>
+      <img src ="http://icons.iconarchive.com/icons/custom-icon-design/lovely-weather-2/256/Humidity-icon.png"/>
+      <div id="search-box-div">
+      <label>Search:
+        <input id="zipcode" type="text" placeholder="enter zipcode" size="75" />
+      </label>
+      </div>
+      <br>
+      <br>
+
+    <!-- search button -->
+    <button id="go-btn">GO</button>
+
       <div class="left">
         <div class="temp"><span id="temp">0</span>&deg;</div>
         <div class="location"><span id="location">Location</span></div>
@@ -103,6 +116,7 @@
       <div class="right">
         <div class="top">
           <img id="icon" src="http://openweathermap.org/img/w/01d.png"/>
+          <div class="desc"><span id="conditions">Description</span></div>
         </div>
       </div>
 
@@ -112,7 +126,7 @@
           </div>
 
           <div class="wind">
-            <span id="wind">0</span>mph<span id="direction">N</span>
+            <span id="wind">0</span>mph <span id="direction">N</span>
           </div>
         </div>
       </main>
@@ -123,6 +137,36 @@
 
 
       <!-- Part 5 - Begin page for news -->
+      <div class = "newsPage">
+        <!-- hidden when a source is clicked on -->
+        <div class="news-sources">
+          <header>
+            <!-- navigate to homepage -->
+            <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
+            <h1 id="news"> Get the top headlines from the following sources: </h1>
+          </header>
+          <main>
+            <div id="news">
+            </div>
+          </main>
+      </div>
+      <div class="headlines"> //hidden when newsPage is first loaded
+        <header>
+          <!-- navigate to homepage -->
+          <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
+        </header>
+      <!-- chosen logo goes here and top headlines -->
+      <!-- summary -->
+        <div class = "summary"></div>
+
+        <button id="nav-back">Back</button> //returns to all sources page
+
+      </div>
+    </div>
+
+
+
+
 
       <!-- End of news page -->
 
@@ -142,7 +186,7 @@
   </body>
 
   <!-- Hearts symbol credit: http://www.sabinanore.com/ -->
-</html>
+  </html>
 
 
 

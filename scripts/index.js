@@ -1,6 +1,9 @@
 window.onload= function(){
   console.log("happy thoughts");
 
+// the URL of our backend to use in our AJAX calls:
+var url = 'http://localhost:3000';
+//var url='https://secure-escarpment-71346.herokuapp.com';
 
 /***** Part 1 - This is scripting for the homepage*****/
 
@@ -12,9 +15,11 @@ quote.style.display = "none";
 var actionPage              = document.querySelector(".actionsPage");
 var notePage                = document.querySelector(".notesPage");
 var weatherPage             = document.querySelector('.weatherPage');
+var newsPage                = document.querySelector('.newsPage');
   actionPage.style.display  ="none";
   notePage.style.display    ="none";
   weatherPage.style.display ="none";
+  newsPage.style.display    ="none";
 
 var quoteBtn= document.getElementById('quote-icon');
 quoteBtn.addEventListener('click', function(ev){
@@ -26,10 +31,9 @@ quote.style.display      = "block";
 
 
 
-var endpoint = "https://quotesondesign.com/wp-json/posts"
+var endpoint = "https://quotesondesign.com/wp-json/posts";
 var query    = endpoint + "?filter[orderby]=rand&filter[posts_per_page]=" + Math.floor(Math.random()*50); // randomizes the amount of post per page so it returns a different quote everytime page refreshes
 console.log(query);
-
 
 $.ajax({
   url: query
@@ -49,6 +53,7 @@ $.ajax({
    ev.preventDefault();
    homepage.style.display    = "none";
    weatherPage.style.display = "none";
+   newsPage.style.display    = "none";
    actionPage.style.display  = "block";
 }); //end of event listener for next button
 
@@ -85,7 +90,7 @@ function timeStamp() {
 // Return the formatted string
   var currentDate= date.join("/") + " " + time.join(":") + " " + suffix;
   console.log(currentDate);
-  document.getElementById('currentDate').innerHTML= currentDate
+  document.getElementById('currentDate').innerHTML= currentDate;
 }
 timeStamp();
 
@@ -94,7 +99,7 @@ timeStamp();
 
 /***************  Part 3 - This is scripting for the notes page***********/
 var today = Date();
-document.getElementById('date').innerHTML;
+document.getElementById('date').innerHTML = today;
 var notesPage    = document.querySelector('.notesPage');
 var notesRoute   = document.getElementById('notes'); //grab element to create navigation
   notesRoute.addEventListener('click', function(ev){
@@ -102,11 +107,9 @@ var notesRoute   = document.getElementById('notes'); //grab element to create na
    homepage.style.display    ="none";
    actionPage.style.display  ="none";
    weatherPage.style.display ="none";
+   newsPage.style.display    ="none";
    notesPage.style.display   ="block";
 
-// the URL of our backend to use in our AJAX calls:
-var url = 'http://localhost:3000';
-//var url='https://secure-escarpment-71346.herokuapp.com';
 
 //hide all entries
 var currentEntries = document.querySelector('.current-entries');
@@ -137,57 +140,20 @@ var seeAll         = document.getElementById('see-all-btn');
           theLi.setAttribute("id" , response[i]._id);
           //create a delete button for every new entry
           //create an update button for every new entry
-          var btnOne     = document.createElement("button") //delete
-          var btnTwo     = document.createElement("button") //update
+          var btnOne     = document.createElement("button"); //delete
+          var btnTwo     = document.createElement("button"); //update
           theLi.appendChild(document.createTextNode(liText));
           entriesList.appendChild(theLi);
           entriesList.appendChild(btnOne);
           entriesList.appendChild(btnTwo);
-          btnOne.setAttribute("class", "deleteBtn");
-          btnOne.setAttribute("onclick", "deleteFxn(" + response[i]._id + ")")
+          // btnOne.setAttribute("class", "deleteBtn");
+          // btnOne.setAttribute("onclick", "deleteFxn(" + response[i]._id + ")");
           btnOne.setAttribute("id" , response[i]._id + "_delete");
           btnTwo.setAttribute("id" , response[i]._id + "_update");
           console.log(entriesList);
           btnOne.innerHTML = "delete";
           btnTwo.innerHTML = "update";
         } //end for Loop
-
-          // //delete an entry
-          // document.querySelector(".deleteBtn").addEventListener("click", function() {
-
-          // });
-          // btnOne.addEventListener('click', function (ev) {
-          //   console.log('deleting...');
-          //
-          //   // var noteId = document.getElementsByTagName("li")[i];
-          //
-          //
-          //   var data = {
-          //     entry: response[i]._id,
-          //   };
-          //
-          //
-          //   $.ajax({
-          //     url: url + '/entries/',
-          //     dataType: 'json',
-          //     data: data,
-          //     method: 'delete'
-          //   }).done(function(response){
-          //     console.log("Item has been deleted.");
-          //     console.log(response);
-          //   }); //end ajax
-          // }); // end event listener for delete
-
-
-
-
-    //       update an entry
-    //       btnTwo.addEventListener('click', function (ev) {
-    //           console.log('updating');
-    //
-    //
-    //
-    //     }); // end event listener for update
     }); //end ajax
 });//end of event listener for seeAll button
 
@@ -201,7 +167,7 @@ var saveButton = document.getElementById('save-btn');
   var newNote = {
     note: note,
     current: today
-  }
+  };
     console.log(newNote);
 
 //post
@@ -222,7 +188,7 @@ var saveButton = document.getElementById('save-btn');
 function deleteFxn(ID) {
   var selectBtn = document.getElementById(ID);
   var data = {
-      entry: selectBtn
+      entry: ID
     };
 
     $.ajax({
@@ -234,52 +200,123 @@ function deleteFxn(ID) {
       console.log("Item has been deleted.");
       console.log(response);
     }); //end ajax
-  };
+  } //end of function
 
-  /**************** Weather Page ************************/
+  /****************** Weather Page ************************/
   /* Recreated weather app after watching a video on Udemy */
 //grab element to create navigation
-  var weatherPage    = document.querySelector('.weatherPage')
   var weatherRoute = document.getElementById('weather');
   weatherRoute.addEventListener('click', function(ev){
      ev.preventDefault();
    homepage.style.display    ="none";
    actionPage.style.display  ="none";
    notesPage.style.display   ="none";
+   newsPage.style.display    ="none";
    weatherPage.style.display ="block";
 
-  function update(weather) {
-    wind.innerHTML        = weather.wind;
-    direction.innerHTML   = weather.direction;
-    humidity.innerHTML    = weather.humidity;
-    location.innerHTML    = weather.loc;
-    temperature.innerHTML = weather.temp;
-    icon.src = "http://openweathermap.org/img/w/" + weather.icon + ".png";
-  }
-   var temperature  = document.getElementById('temp');
-   var location     = document.getElementById('location');
-   var icon         = document.getElementById('icon');
-   var humidity     = document.getElementById('humidity');
-   var wind         = document.getElementById('wind');
-   var direction    = document.getElementById('direction');
+   var zipBox       = document.getElementById('zipcode');
+   var searchBoxDiv = document.getElementById('search-box-div');
+   var goBtn        = document.getElementById('go-btn');
+   goBtn.addEventListener('click', function(ev){
+     ev.preventDefault();
 
-   var weather = {};
-    weather.wind = 3.5;
-    weather.direction = "N";
-    weather.humidity = 10;
-    weather.loc = "NYC";
-    weather.temp = "80";
-    weather.icon = "11d";
+  var zipcode       = zipBox.value;
+  var queryString   = zipcode;
 
-  update(weather);
+ // *** send data to our BE
+  var data = {
+     queryString: queryString
+   };
+   $.ajax({
+     url: url + '/forecast/search',
+     method: 'POST',
+     data: data,
+     dataType: 'json'
+   }).done(function(response) {
+     console.log( "response:", response );
 
+     var temperature  = document.getElementById('temp');
+     var location     = document.getElementById('location');
+     var icon         = document.getElementById('icon');
+     var humidity     = document.getElementById('humidity');
+     var wind         = document.getElementById('wind');
+     var direction    = document.getElementById('direction');
+     var description  = document.getElementById('conditions');
+
+
+
+    function update(weather) {
+      var weather = {};
+      wind.innerHTML        = response.wind.speed + " ";
+      direction.innerHTML   = degToDir(response.wind.deg);
+      humidity.innerHTML    = "humidity:" + " " + response.main.humidity;
+      location.innerHTML    = response.name;
+      temperature.innerHTML = KtoC(response.main.temp) + "F";
+      icon.src = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+      description.innerHTML = response.weather[0].description;
+    } //end of function
+
+//original code from udemy lecture on creating weather app
+    function degToDir(degrees){
+      if(degrees >= 348.75 && degrees < 11.25)
+    	return "N";
+        if(degrees >= 11.25 && degrees < 33.75)
+    	return "NNE";
+        if(degrees >= 33.75  && degrees < 56.25)
+    	return "NE";
+        if(degrees >= 56.25  && degrees < 78.75)
+    	return "ENE";
+        if(degrees >= 78.75  && degrees < 101.25)
+    	return "E";
+        if(degrees >= 101.25  && degrees < 123.75)
+    	return "SE";
+        if(degrees >= 123.75  && degrees < 146.25)
+    	return "SSE";
+        if(degrees >= 146.25  && degrees < 168.75)
+    	return "S";
+        if(degrees >= 191.25  && degrees < 213.75)
+    	return "SSW";
+        if(degrees >= 213.75 && degrees < 236.25)
+    	return "SW";
+        if(degrees >= 236.25  && degrees < 258.75)
+    	return "WSW";
+        if(degrees >= 258.75  && degrees < 281.25)
+    	return "W";
+        if(degrees >= 281.25  && degrees < 303.75)
+    	return "WNW";
+        if(degrees >= 303.75  && degrees < 326.25)
+    	return "NW";
+        if(degrees >= 326.25  && degrees < 348.75)
+    	return "NNW";
+}
+
+
+    function KtoC(k) {
+      return Math.round(k * (9/5) - 459.67);
+    }
+
+    update(weather);
+
+       }); // end ajax
+   }); //end of event listener for go button
 }); //end of weatherRoute listening function
 
 
 
 
     /**************** News Page************************/
-  var newsRoute    = document.getElementById('news');
+
+  //grab element to create navigation
+    var newsRoute    = document.getElementById('news');
+    newsRoute.addEventListener('click', function(ev){
+       ev.preventDefault();
+     homepage.style.display    ="none";
+     actionPage.style.display  ="none";
+     notesPage.style.display   ="none";
+     weatherPage.style.display ="none";
+    newsPage.style.display     ="block";
+
+});
 
 
-} //end window load
+}; //end window load

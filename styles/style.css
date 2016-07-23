@@ -92,3 +92,27 @@ footer {
 }
 
 /*Weather Page */
+
+#currentForecast {
+  color: #53BBB4;
+  font-family: 'Lily Script One', cursive;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.left , .right, .bottom {
+  margin: 50px;
+}
+
+.icon {
+  width: 500px;
+  height: 500px;
+}
+
+/*News Page*/
+#news {
+  color: #53BBB4;
+  font-family: 'Lily Script One', cursive;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
