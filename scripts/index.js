@@ -342,6 +342,9 @@ function deleteFxn(ID) {
       var newsData = {
          queryString: queryString
        };
+
+
+
        $.ajax({
          url: url + '/news/articles',
          method: 'POST',
@@ -350,18 +353,30 @@ function deleteFxn(ID) {
        }).done(function(response) {
          console.log( "response:", response);
 
+
         var headline1 = document.getElementById('headline1');
         var headline2 = document.getElementById('headline2');
         var headline3 = document.getElementById('headline3');
         var headline4 = document.getElementById('headline4');
         var headline5 = document.getElementById('headline5');
 
+        var summary1  = document.getElementById('summary1');
+        var summary2  = document.getElementById('summary2');
+        var summary3  = document.getElementById('summary3');
+        var summary4  = document.getElementById('summary4');
+        var summary5  = document.getElementById('summary5');
 
         headline1.innerHTML = response.articles[0].title.link(response.articles[0].url);
         headline2.innerHTML = response.articles[1].title.link(response.articles[1].url);
         headline3.innerHTML = response.articles[2].title.link(response.articles[2].url);
         headline4.innerHTML = response.articles[3].title.link(response.articles[3].url);
         headline5.innerHTML = response.articles[4].title.link(response.articles[4].url);
+
+        summary1.innerHTML = response.articles[0].description;
+        summary2.innerHTML = response.articles[1].description;
+        summary3.innerHTML = response.articles[2].description;
+        summary4.innerHTML = response.articles[3].description;
+        summary5.innerHTML = response.articles[4].description;
 
 
       }); //end of ajax
