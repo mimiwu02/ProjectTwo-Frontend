@@ -325,25 +325,22 @@ function deleteFxn(ID) {
      newsPage.style.display    ="block";
 
      var newSources   = document.querySelector('news-sources');
-     var headlines = document.querySelector('.headlines');
+     var headlines    = document.querySelector('.headlines');
      headlines.style.display = "none"; //stays hidden until a news source is chosen
+     var logo         = document.getElementById('news-logo');
+     var newslogo     = "";
+     var topHeadlines = document.getElementById('headlines');
+     var headlines    = "";
 
      var go = document.getElementById('go-button');
      go.addEventListener('click', function(ev){
        ev.preventDefault();
-       var selection = document.querySelector('.selection');
-       var queryString = selection.value;
-       console.log(queryString);
-
-
-  // the URL of our backend to use in our AJAX calls:
-       var url = 'http://localhost:3000';
-       //var url='https://secure-escarpment-71346.herokuapp.com';
+       var selection = document.querySelector('.selection').value;
 
 
      // *** send data to our BE
       var newsData = {
-         queryString: queryString
+         queryString: selection
        };
        $.ajax({
          url: url + '/news/sources',
@@ -355,8 +352,7 @@ function deleteFxn(ID) {
 
         //  insert image of logo
 
-         var newsLogo = response.sources.urlsToLogos.medium;
-         var logo     = document.getElementById('news-logo');
+         newsLogo = response.sources.urlsToLogos.medium;
          logo.innerHTML = newsLogo;
 
 
