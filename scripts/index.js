@@ -324,40 +324,47 @@ function deleteFxn(ID) {
      weatherPage.style.display ="none";
      newsPage.style.display    ="block";
 
-     var newSources   = document.querySelector('news-sources');
      var headlines    = document.querySelector('.headlines');
      headlines.style.display = "none"; //stays hidden until a news source is chosen
-     var logo         = document.getElementById('news-logo');
-     var newslogo     = "";
-     var topHeadlines = document.getElementById('headlines');
-     var headlines    = "";
 
-     var go = document.getElementById('go-button');
-     go.addEventListener('click', function(ev){
+
+
+     var goButton = document.getElementById('go-button');
+     goButton.addEventListener('click', function(ev){
        ev.preventDefault();
-       var selection = document.querySelector('.selection').value;
+       headlines.style.display = "block";
+       var selection    = document.querySelector('.selection')
+       var queryString = selection.value;
+       console.log(queryString);
 
 
      // *** send data to our BE
       var newsData = {
-         queryString: selection
+         queryString: queryString
        };
        $.ajax({
-         url: url + '/news/sources',
+         url: url + '/news/articles',
          method: 'POST',
          data: newsData,
-         dataType: 'jsonp'
+         dataType: 'json'
        }).done(function(response) {
          console.log( "response:", response);
 
-        //  insert image of logo
+        var headline1 = document.getElementById('headline1');
+        var headline2 = document.getElementById('headline2');
+        var headline3 = document.getElementById('headline3');
+        var headline4 = document.getElementById('headline4');
+        var headline5 = document.getElementById('headline5');
 
-         newsLogo = response.sources.urlsToLogos.medium;
-         logo.innerHTML = newsLogo;
+
+        headline1.innerHTML = response.articles[0].title.link(response.articles[0].url);
+        headline2.innerHTML = response.articles[1].title.link(response.articles[1].url);
+        headline3.innerHTML = response.articles[2].title.link(response.articles[2].url);
+        headline4.innerHTML = response.articles[3].title.link(response.articles[3].url);
+        headline5.innerHTML = response.articles[4].title.link(response.articles[4].url);
 
 
-
-      }); //end of function
+      }); //end of ajax
   }); // end of event listener for go button
 }); //end event listener for news route
 
