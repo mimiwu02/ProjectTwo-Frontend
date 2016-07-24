@@ -111,9 +111,11 @@ var notesRoute   = document.getElementById('notes'); //grab element to create na
    notesPage.style.display   ="block";
 
 
-//hide all entries
+//hide all entries and modal box
 var currentEntries = document.querySelector('.current-entries');
   currentEntries.style.display = "none";
+var modalBox  = document.querySelector(".modalBox");
+  modalBox.style.display="none";
 
 /* grab see all button element */
 var seeAll         = document.getElementById('see-all-btn');
@@ -146,8 +148,8 @@ var seeAll         = document.getElementById('see-all-btn');
           entriesList.appendChild(theLi);
           entriesList.appendChild(btnOne);
           entriesList.appendChild(btnTwo);
-          // btnOne.setAttribute("class", "deleteBtn");
-          // btnOne.setAttribute("onclick", "deleteFxn(" + response[i]._id + ")");
+          btnOne.setAttribute("class", "deleteBtn");
+          btnOne.setAttribute("onclick", "deleteFxn(" + response[i]._id + ")");
           btnOne.setAttribute("id" , response[i]._id + "_delete");
           btnTwo.setAttribute("id" , response[i]._id + "_update");
           console.log(entriesList);
@@ -163,6 +165,12 @@ var saveButton = document.getElementById('save-btn');
   saveButton.addEventListener('click', function(ev){
     ev.preventDefault();
     console.log("you click save!");
+    var modalBox  = document.querySelector(".modalBox");
+      modalBox.style.display="block";
+    var okButton = document.getElementById('ok-btn').addEventListener('click',function(ev){
+      ev.preventDefault();
+      modalBox.style.display="none";
+    }); //end of modal box event listener
   var note       = document.getElementById('textBox').value;
   var newNote = {
     note: note,
@@ -195,7 +203,7 @@ function deleteFxn(ID) {
       url: url + '/entries/' + entry,
       dataType: 'json',
       data: data,
-      type: 'delete'
+      method: 'delete'
     }).done(function(response){
       console.log("Item has been deleted.");
       console.log(response);
@@ -314,9 +322,48 @@ function deleteFxn(ID) {
      actionPage.style.display  ="none";
      notesPage.style.display   ="none";
      weatherPage.style.display ="none";
-    newsPage.style.display     ="block";
+     newsPage.style.display    ="block";
 
-});
+     var newSources   = document.querySelector('news-sources');
+     var headlines = document.querySelector('.headlines');
+     headlines.style.display = "none"; //stays hidden until a news source is chosen
+
+     var go = document.getElementById('go-button');
+     go.addEventListener('click', function(ev){
+       ev.preventDefault();
+       var selection = document.querySelector('.selection');
+       var queryString = selection.value;
+       console.log(queryString);
+
+
+  // the URL of our backend to use in our AJAX calls:
+       var url = 'http://localhost:3000';
+       //var url='https://secure-escarpment-71346.herokuapp.com';
+
+
+     // *** send data to our BE
+      var newsData = {
+         queryString: queryString
+       };
+       $.ajax({
+         url: url + '/news/sources',
+         method: 'POST',
+         data: newsData,
+         dataType: 'jsonp'
+       }).done(function(response) {
+         console.log( "response:", response);
+
+        //  insert image of logo
+
+         var newsLogo = response.sources.urlsToLogos.medium;
+         var logo     = document.getElementById('news-logo');
+         logo.innerHTML = newsLogo;
+
+
+
+      }); //end of function
+  }); // end of event listener for go button
+}); //end event listener for news route
 
 
 }; //end window load

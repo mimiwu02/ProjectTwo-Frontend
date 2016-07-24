@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>Homepage</title>
     <link rel="icon" href="images/unicorn.png" type="image/x-icon">
-    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <!-- <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/> -->
     <link rel="stylesheet" href="styles/style.css" charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
@@ -17,13 +17,13 @@
     <!-- +++++++++Part 1: Beginning of homepage ++++++++++++++ -->
     <div class = "homepage">
       <header>
-        <h1> joie de vivre</h1>
+        <h1 id= "title"> joie de vivre</h1>
         <h3> Finding joy in knowing that your day was productive! </h3>
         <h5 id="btn-note"> * Click below for a quote on design</h5>
         <br>
       </header>
 
-      <main>
+      <main id="part1">
           <img id= "quote-icon" src= "https://image.freepik.com/free-icon/conversation-mark-interface-symbol-of-circular-speech-bubble-with-quotes-signs-inside_318-56572.jpg" alt="quote-icon"/>
           <div id="quote">
             Quote goes here
@@ -44,7 +44,7 @@
         <!-- navigate to homepage -->
         <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
       </header>
-      <main>
+      <main id="part2">
         <h1 id="question">What would you like to do today?</h1>
         <section id="action-btns">
           <img id="weather" src= "images/weather.png" alt="weather"/>
@@ -61,8 +61,13 @@
       <header>
         <!-- navigate to homepage -->
         <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
+        <!-- <ul class="nav">
+          <li>Weather</li>
+          <li>News</li>
+          <li>Journal</li>
+        </ul> -->
       </header>
-      <main>
+      <main id="part3">
         <h1 id="questionTwo">What is on your mind?</h1>
         <img id="background" src="https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/135/1355/1355092/h58vxj0z2wz7kv6bcnh0oluql4eozgzuokalvictjrcrdee6xakyude5glrkxcqq-f.jpg?1465574296" alt="background"/>
         <span id = "date"></span>
@@ -82,6 +87,15 @@
           <br><hr>
           </div>
         </section>
+        <!-- success message for successfully saving an entry -->
+        <div class="modalBox">
+          <div class="success">
+            <p>Your note was successfully saved!</p>
+            <br>
+          <button id="ok-btn">OK</button>
+            <div>
+        </div>
+
 
       </main>
     </div>
@@ -95,7 +109,7 @@
       <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
     </header>
 
-    <main>
+    <main id="part4">
       <h1 id="currentForecast">Current forecast:</h1>
       <img src ="http://icons.iconarchive.com/icons/custom-icon-design/lovely-weather-2/256/Humidity-icon.png"/>
       <div id="search-box-div">
@@ -143,26 +157,48 @@
           <header>
             <!-- navigate to homepage -->
             <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
-            <h1 id="news"> Get the top headlines from the following sources: </h1>
+            <h1 id="news-heading"> Get the top headlines from the following sources: </h1>
           </header>
-          <main>
+
+          <main id="part5">
             <div id="news">
+            <!-- ability to select from a variety of sources -->
+            <div class= "dropdown">
+                <select class="selection">
+                  <option value="default">Choose</option>
+                  <option id ="bbc-news" name="chosen-option" value="bbcnews">BBC News</option>
+                  <option id ="bloomerg" name="chosen-option" value="bloomberg">Bloomerg</option>
+                  <option id ="cnn" name="chosen-option" value="cnn">CNN</option>
+                  <option id ="engadget" name="chosen-option" value="engadget">Engadget</option>
+                  <option id ="entertainment-weekly" name="chosen-option" value="entertainment-weekly">Entertainment Weekly</option>
+                  <option id ="espn" name="chosen-option" value="espn">ESPN</option>
+                  <option id ="techcrunch" name="chosen-option" value="techcrunch">TechCrunch</option>
+                  <option id ="huffington" name="chosen-option" value="huffington">Huffington Post</option>
+                  <option id ="wired" name="chosen-option" value="wired">Wired</option>
+                </select>
+                <br>
+                <button type="button" name="go-button" id="go-button">GO</button>
+            </div>
+            </div>
+
+            <br>
+            <br>
+            <!-- hidden when newsPage is first loaded -->
+            <div class="headlines">
+              <h1> Here are today's top headlines </h1>
+                <!-- chosen logo goes here and top headlines -->
+                <div id="news-logo"><div>
+                <div id="headlines"></div>
+          
+            <!-- summary -->
+              <div class = "summary"></div>
+
             </div>
           </main>
       </div>
-      <div class="headlines"> //hidden when newsPage is first loaded
-        <header>
-          <!-- navigate to homepage -->
-          <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
-        </header>
-      <!-- chosen logo goes here and top headlines -->
-      <!-- summary -->
-        <div class = "summary"></div>
 
-        <button id="nav-back">Back</button> //returns to all sources page
 
-      </div>
-    </div>
+
 
 
 
@@ -180,7 +216,7 @@
 
   <!-- CDN -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script> -->
   <script src="scripts/index.js" charset="utf-8"></script>
 
   </body>
