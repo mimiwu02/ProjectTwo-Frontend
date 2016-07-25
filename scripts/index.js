@@ -275,7 +275,7 @@ var saveButton = document.getElementById('save-btn');
       humidity.innerHTML    = "humidity:" + " " + response.main.humidity;
       location.innerHTML    = response.name;
       temperature.innerHTML = KtoC(response.main.temp) + "F";
-      icon.src = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+      icon.src = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
       description.innerHTML = response.weather[0].description;
     } //end of function
 

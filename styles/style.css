@@ -84,7 +84,7 @@ footer {
 .actionsPage {
 display: flex;
 text-align: center;
-background-image: url('http://christinawilliamsblog.com/wp-content/uploads/2015/03/Desktop-Wallpaper-01.png');
+background-image: url('https://christinawilliamsblog.com/wp-content/uploads/2015/03/Desktop-Wallpaper-01.png');
 background-repeat: no-repeat;
 background-size: cover;
 width: 100vw;
@@ -232,7 +232,7 @@ height: 100vh;
 .weatherPage {
   display: flex;
   text-align: center;
-  background-image: url('http://static1.squarespace.com/static/564a2c54e4b066ce77adf084/t/5696c105df40f3edbe83b651/1452720399678/POLYGON+PATTERN.png?format=1500w');
+  background-image: url('https://static1.squarespace.com/static/564a2c54e4b066ce77adf084/t/5696c105df40f3edbe83b651/1452720399678/POLYGON+PATTERN.png?format=1500w');
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
@@ -279,7 +279,7 @@ height: 100vh;
 .newsPage {
   display: flex;
   text-align: center;
-  background-image: url('http://millennialmagazine.com/wp-content/uploads/2016/01/personalized-B.jpg');
+  background-image: url('https://millennialmagazine.com/wp-content/uploads/2016/01/personalized-B.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
