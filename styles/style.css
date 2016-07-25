@@ -84,7 +84,7 @@ footer {
 .actionsPage {
 display: flex;
 text-align: center;
-background-image: url('https://christinawilliamsblog.com/wp-content/uploads/2015/03/Desktop-Wallpaper-01.png');
+background-image: url('http://christinawilliamsblog.com/wp-content/uploads/2015/03/Desktop-Wallpaper-01.png');
 background-repeat: no-repeat;
 background-size: cover;
 width: 100vw;
@@ -279,7 +279,7 @@ height: 100vh;
 .newsPage {
   display: flex;
   text-align: center;
-  background-image: url('https://millennialmagazine.com/wp-content/uploads/2016/01/personalized-B.jpg');
+  background-image: url('http://millennialmagazine.com/wp-content/uploads/2016/01/personalized-B.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
