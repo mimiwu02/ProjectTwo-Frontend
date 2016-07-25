@@ -2,7 +2,7 @@
 ## **Project Two**
 ### *Joie de vivre - productivity app*
 #### Overview
-This an application designed to allow a busy person to wake up in the morning and be able to check on the forecast, top headline on the news, and add notes to self.
+This an application designed to allow a busy person to wake up in the morning and be able to check the forecast, top headlines on the news, and add notes to self.
 
 
 #### Technology Used
