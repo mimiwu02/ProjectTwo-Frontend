@@ -40,7 +40,7 @@
     <!--+++++++++++ Part 2 - Begin page for actions +++++++++++++ -->
     <div class = "actionsPage">
       <header>
-        <span id="currentDate"></span>
+
         <!-- navigate to homepage -->
         <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
       </header>
@@ -51,6 +51,7 @@
           <img id="news" src= "images/news.png" alt="news"/></a>
           <img id="notes" src= "images/journal.png" alt="journal"/>
         </section>
+        <span id="currentDate"></span>
       </main>
     </div>
     <!-- End of actions page -->
@@ -58,11 +59,12 @@
 
     <!--++++++++Part 3 - Begin page for notes+++++++ -->
     <div class = "notesPage">
-      <img id="notes-background" src="https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/135/1355/1355092/h58vxj0z2wz7kv6bcnh0oluql4eozgzuokalvictjrcrdee6xakyude5glrkxcqq-f.jpg?1465574296" alt="background"/>
-      <span id = "date"></span>
       <header class="part3">
         <!-- navigate to homepage -->
         <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
+        <h1 id="questionTwo">What is on your mind?</h1>
+        <br>
+        <span id = "date"></span>
         <!-- <ul class="nav">
           <li>Weather</li>
           <li>News</li>
@@ -70,8 +72,9 @@
         </ul> -->
       </header>
       <main class="part3">
-        <h1 id="questionTwo">What is on your mind?</h1>
         <textarea id="textBox" name="note" rows="8" cols="40"></textarea>
+        <br>
+        <br>
         <button id="save-btn" type="button" name="save">save</button>
         <button id="see-all-btn" type="button" name="see-all">all notes</button>
 
@@ -79,7 +82,7 @@
         <section class="current-entries">
           <!-- See All: -->
           <div id="all-div">
-            <p><b>All Notes:</b></p>
+            <p id="all-notes"><b>All Notes:</b></p>
             <ul id="entries-list">
           <!-- append all notes here -->
           <!-- add delete and update button here -->
@@ -115,12 +118,11 @@
       <label>Search:
         <input id="zipcode" type="text" placeholder="enter zipcode" size="75" />
       </label>
+          <button id="go-btn">GO</button>
       </div>
-      <br>
-      <br>
 
     <!-- search button -->
-    <button id="go-btn">GO</button>
+
 
       <div class="left">
         <div class="temp"><span id="temp">0</span>&deg;</div>
@@ -174,7 +176,10 @@
                   <option id ="wiredde" name="chosen-option" value="wiredde">Wired</option>
                 </select>
                 <br>
+                <br>
                 <button type="button" name="go-button" id="go-button">GO</button>
+                <br>
+
             </div>
             </div>
 
@@ -212,10 +217,6 @@
       </div>
 
 
-
-
-
-
       <!-- End of news page -->
 
 
@@ -236,4 +237,5 @@
 
 <!--More credits
 formaction property: http://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link
-Quotes API: http://quotesondesign.com/the-api/ -->
+Quotes API: http://quotesondesign.com/the-api/
+Liza's Marvel/Unicorns code-->

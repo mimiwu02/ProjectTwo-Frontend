@@ -99,7 +99,7 @@ timeStamp();
 
 /***************  Part 3 - This is scripting for the notes page***********/
 var today = Date();
-document.getElementById('date').innerHTML = today;
+document.getElementById('date').innerHTML = "Today is" + " " + today;
 var notesPage    = document.querySelector('.notesPage');
 var notesRoute   = document.getElementById('notes'); //grab element to create navigation
   notesRoute.addEventListener('click', function(ev){
@@ -154,6 +154,7 @@ $.get({
     entriesList.appendChild(btnOne);
     entriesList.appendChild(btnTwo);
     btnOne.setAttribute("class", "deleteBtn");
+    btnTwo.setAttribute("class", "updateBtn");
     // btnOne.setAttribute("onclick", "deleteFxn(" + response[i]._id + ")");
     btnOne.setAttribute("id" , response[i]._id + "_delete");
     btnTwo.setAttribute("id" , response[i]._id + "_update");
@@ -223,22 +224,6 @@ var saveButton = document.getElementById('save-btn');
 
 
 
-// function deleteFxn(ID) {
-//   var selectBtn = document.getElementById(ID);
-//   var data = {
-//       entry: ID
-//     };
-//
-//     $.ajax({
-//       url: url + '/entries/' + entry,
-//       dataType: 'json',
-//       data: data,
-//       method: 'delete'
-//     }).done(function(response){
-//       console.log("Item has been deleted.");
-//       console.log(response);
-//     }); //end ajax
-//   } //end of function
 
   /****************** Weather Page ************************/
   /* Recreated weather app after watching a video on Udemy */
