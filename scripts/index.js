@@ -2,8 +2,8 @@ window.onload= function(){
   console.log("happy thoughts");
 
 // the URL of our backend to use in our AJAX calls:
-var url = 'http://localhost:3000';
-//var url='https://secure-escarpment-71346.herokuapp.com';
+// var url = 'http://localhost:3000';
+var url='https://secure-escarpment-71346.herokuapp.com';
 
 /***** Part 1 - This is scripting for the homepage*****/
 
