@@ -9,9 +9,9 @@ This an application designed to allow a busy person to wake up in the morning an
 I used HTML, CSS, JavaScript, MongoDB, node.js, AJAX.
 
 APIs:
-https://newsapi.org/
-https://quotesondesign.com/
-http://openweathermap.org/api
+https://newsapi.org/ <br>
+https://quotesondesign.com/ <br>
+http://openweathermap.org/api <br>
 
 
 HTML was used to build out the skeleton for each page. CSS was used to add background images for each page and design the overall look and feel. JavaScript was used on the front-end to work with the HTML. It hid all of my application pages so no reload needed! JavaScript was also used to call on MongoDB to store and access data and it was used to call on various APIs. AJAX was used to send and retrieve data between backend and the front-end, to be able to access the data I needed from MongoDB and APIs.
