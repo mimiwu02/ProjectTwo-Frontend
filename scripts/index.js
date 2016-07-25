@@ -125,38 +125,68 @@ var seeAll         = document.getElementById('see-all-btn');
   currentEntries.style.display="block";
   console.log("you want to see all!");
 
-  // get all
-      $.ajax({
-        url: url + '/entries',
-        dataType: 'json'
-      }).done(function(response){
-        console.log("response: ", response);
+// get all
+$.get({
+  url: url + '/entries',
+  dataType: 'json'
+}).done(function(response){
+  console.log("response: ", response);
 
-        /* Loop & append to DOM: */
-        var entriesList = document.getElementById('entries-list');
-        // remove existing li's first
-        entriesList.innerHTML = '';
-        for (var i = 0; i < response.length; i++) {
-          var liText     = response[i].note + " " + " " + response[i].current;
-          var theLi      = document.createElement('li');
-          theLi.setAttribute("id" , response[i]._id);
-          //create a delete button for every new entry
-          //create an update button for every new entry
-          var btnOne     = document.createElement("button"); //delete
-          var btnTwo     = document.createElement("button"); //update
-          theLi.appendChild(document.createTextNode(liText));
-          entriesList.appendChild(theLi);
-          entriesList.appendChild(btnOne);
-          entriesList.appendChild(btnTwo);
-          btnOne.setAttribute("class", "deleteBtn");
-          btnOne.setAttribute("onclick", "deleteFxn(" + response[i]._id + ")");
-          btnOne.setAttribute("id" , response[i]._id + "_delete");
-          btnTwo.setAttribute("id" , response[i]._id + "_update");
-          console.log(entriesList);
-          btnOne.innerHTML = "delete";
-          btnTwo.innerHTML = "update";
-        } //end for Loop
-    }); //end ajax
+  /* Loop & append to DOM: */
+  var entriesList = document.getElementById('entries-list');
+  // remove existing li's first
+  entriesList.innerHTML = '';
+  for (var i = 0; i < response.length; i++) {
+    var liText     = response[i].note + " " + " " + response[i].current;
+    var theLi      = document.createElement('li');
+    theLi.setAttribute("id" , response[i]._id);
+    //create a delete button for every new entry
+    //create an update button for every new entry
+    var btnOne     = document.createElement("button"); //delete
+    var btnTwo     = document.createElement("button"); //update
+    var id = document.createElement('p');
+    id.className ="hidden";
+    id.innerHTML = response[i]._id;
+    id.style.visibility ="hidden";
+    entriesList.appendChild(id);
+    theLi.appendChild(document.createTextNode(liText));
+    entriesList.appendChild(theLi);
+    entriesList.appendChild(btnOne);
+    entriesList.appendChild(btnTwo);
+    btnOne.setAttribute("class", "deleteBtn");
+    // btnOne.setAttribute("onclick", "deleteFxn(" + response[i]._id + ")");
+    btnOne.setAttribute("id" , response[i]._id + "_delete");
+    btnTwo.setAttribute("id" , response[i]._id + "_update");
+    console.log(entriesList);
+    btnOne.innerHTML = "delete";
+    btnTwo.innerHTML = "update";
+  } //end for Loop
+
+
+  /*Delete*/
+  var deleteBtn = document.querySelector('.deleteBtn');
+  deleteBtn.addEventListener('click', function(ev){
+    console.log('deleting');
+      var entryList = document.getElementById('entries-list');
+      var hidden    = document.querySelector('.hidden');
+      var idNum     = hidden.innerHTML;
+      console.log(idNum)
+
+      var data = {
+        idNum: idNum
+      };
+
+      $.ajax({
+      url: url + '/entries/' + idNum,
+      dataType: 'json',
+      data: data,
+      method: 'delete'
+      }).done(function(response){
+      console.log("response:", response);
+      }); // end ajax
+
+    }); // end event listener for delete
+  }); //end get
 });//end of event listener for seeAll button
 
 
@@ -193,22 +223,22 @@ var saveButton = document.getElementById('save-btn');
 
 
 
-function deleteFxn(ID) {
-  var selectBtn = document.getElementById(ID);
-  var data = {
-      entry: ID
-    };
-
-    $.ajax({
-      url: url + '/entries/' + entry,
-      dataType: 'json',
-      data: data,
-      method: 'delete'
-    }).done(function(response){
-      console.log("Item has been deleted.");
-      console.log(response);
-    }); //end ajax
-  } //end of function
+// function deleteFxn(ID) {
+//   var selectBtn = document.getElementById(ID);
+//   var data = {
+//       entry: ID
+//     };
+//
+//     $.ajax({
+//       url: url + '/entries/' + entry,
+//       dataType: 'json',
+//       data: data,
+//       method: 'delete'
+//     }).done(function(response){
+//       console.log("Item has been deleted.");
+//       console.log(response);
+//     }); //end ajax
+//   } //end of function
 
   /****************** Weather Page ************************/
   /* Recreated weather app after watching a video on Udemy */

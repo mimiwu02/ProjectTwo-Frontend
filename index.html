@@ -16,9 +16,9 @@
   <body>
     <!-- +++++++++Part 1: Beginning of homepage ++++++++++++++ -->
     <div class = "homepage">
-      <header>
+      <header id=homepage-header>
         <h1 id= "title"> joie de vivre</h1>
-        <h3> Finding joy in knowing that your day was productive! </h3>
+        <h3 id="subtitle"> Finding joy in knowing that your day was productive! </h3>
         <h5 id="btn-note"> * Click below for a quote on design</h5>
         <br>
       </header>
@@ -58,7 +58,9 @@
 
     <!--++++++++Part 3 - Begin page for notes+++++++ -->
     <div class = "notesPage">
-      <header>
+      <img id="notes-background" src="https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/135/1355/1355092/h58vxj0z2wz7kv6bcnh0oluql4eozgzuokalvictjrcrdee6xakyude5glrkxcqq-f.jpg?1465574296" alt="background"/>
+      <span id = "date"></span>
+      <header class="part3">
         <!-- navigate to homepage -->
         <a href="index.html"><img class="home" src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/home512x512.png"/></a>
         <!-- <ul class="nav">
@@ -67,10 +69,8 @@
           <li>Journal</li>
         </ul> -->
       </header>
-      <main id="part3">
+      <main class="part3">
         <h1 id="questionTwo">What is on your mind?</h1>
-        <img id="background" src="https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/135/1355/1355092/h58vxj0z2wz7kv6bcnh0oluql4eozgzuokalvictjrcrdee6xakyude5glrkxcqq-f.jpg?1465574296" alt="background"/>
-        <span id = "date"></span>
         <textarea id="textBox" name="note" rows="8" cols="40"></textarea>
         <button id="save-btn" type="button" name="save">save</button>
         <button id="see-all-btn" type="button" name="see-all">all notes</button>
@@ -111,7 +111,6 @@
 
     <main id="part4">
       <h1 id="currentForecast">Current forecast:</h1>
-      <img src ="http://icons.iconarchive.com/icons/custom-icon-design/lovely-weather-2/256/Humidity-icon.png"/>
       <div id="search-box-div">
       <label>Search:
         <input id="zipcode" type="text" placeholder="enter zipcode" size="75" />

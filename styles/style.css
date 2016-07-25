@@ -22,6 +22,7 @@ body {
   margin-bottom: 0;
 }
 
+
 h3, h5, footer, #quote {
   font-family: 'Roboto', sans-serif;
   text-align: center;
@@ -33,16 +34,15 @@ h5 {
 }
 
 
-header {
+#homepage-header {
   height: 20vh;
   }
 
 
 
-main {
+#part1 {
   height: 75vh;
   text-align: center;
-  z-index: 1;
   }
 
 footer {
@@ -54,6 +54,7 @@ footer {
   height: 200px;
   weight: 200px;
   margin-top: 100px;
+  z-index: 1;
 }
 
 #quote {
@@ -71,7 +72,12 @@ footer {
   border-radius: 5px;
 }
 
-/*To Do Page*/
+/*Actions Page*/
+#background{
+  opacity: 0.4;
+  background-size: cover;
+}
+
 #currentDate {
   font-family: 'Roboto', sans-serif;
   margin-left: 30px;
@@ -86,15 +92,21 @@ footer {
   font-family: 'Lily Script One', cursive;
   font-size: 30px;
   margin-bottom: 30px;
+  z-index: 1
   }
 
 #weather, #news, #notes{
   width: 100px;
   height: 100px;
   margin: 20px;
+  z-index: 1;
 }
 
 /*Notes Page*/
+
+  .notesPage {
+    display: flex;
+}
 /* styling the modal box background */
   .modalBox {
   background-color: rgba(0, 0, 0, 0.4);;
@@ -126,6 +138,24 @@ footer {
   padding: 5px;
   border-radius: 5px;
   font-weight: bold;
+}
+
+#notes-background{
+  opacity: 0.4;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.part3  {
+  z-index: 2;
+  justify-content: center;
+}
+
+#entries-list {
+  list-style: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
 }
 
 
