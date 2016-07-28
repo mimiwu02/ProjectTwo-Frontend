@@ -135,7 +135,7 @@ $.get({
   /* Loop & append to DOM: */
   var entriesList = document.getElementById('entries-list');
   // remove existing li's first
-  entriesList.innerHTML = '';
+    entriesList.innerHTML = '';
   for (var i = 0; i < response.length; i++) {
     var liText     = response[i].note + " " + " " + response[i].current;
     var theLi      = document.createElement('li');
@@ -168,7 +168,6 @@ $.get({
   var deleteBtn = document.querySelector('.deleteBtn');
   deleteBtn.addEventListener('click', function(ev){
     console.log('deleting');
-      var entryList = document.getElementById('entries-list');
       var hidden    = document.querySelector('.hidden');
       var idNum     = hidden.innerHTML;
       console.log(idNum)
@@ -187,8 +186,33 @@ $.get({
       }); // end ajax
 
     }); // end event listener for delete
+
+    /*update button*/
+  var updateBtn = document.querySelector('.updateBtn');
+  updateBtn.addEventListener('click', function() {
+    console.log('updating...');
+    var hiddenId  = document.querySelector('.hidden');
+    var idNumber  = hiddenId.innerHTML;
+    console.log(idNumber)
+    var updateTextBox = document.getElementById('textBox').value;
+
+    var newData = {
+      updateTextBox: updateTextBox,
+      id: idNumber
+    }
+    $.ajax({
+      url: url + '/entries/' + idNumber,
+      dataType: 'json',
+      method: 'put',
+      data: newData
+    }).done(function(response){
+      console.log(response);
+    }); // end ajax
+
+  }); // end update button
   }); //end get
 });//end of event listener for seeAll button
+
 
 
 /* save */
@@ -275,7 +299,7 @@ var saveButton = document.getElementById('save-btn');
       humidity.innerHTML    = "humidity:" + " " + response.main.humidity;
       location.innerHTML    = response.name;
       temperature.innerHTML = KtoC(response.main.temp) + "F";
-      icon.src = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+      icon.src = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
       description.innerHTML = response.weather[0].description;
     } //end of function
 
